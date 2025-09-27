@@ -1,8 +1,11 @@
 const btnNav = document.querySelector(".btn-mobile-nav");
 const headerEl = document.querySelector(".header");
+const html = document.querySelector("html");
 
 btnNav.addEventListener("click", function () {
   headerEl.classList.toggle("nav-open");
+  html.classList.toggle("nav-open");
+  html.classList.toggle("nav-overflow");
 });
 
 const yearEl = document.querySelector(".year");
@@ -27,10 +30,33 @@ allLinks.forEach(function (link) {
       console.log(sectionEl);
     } else window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // if (link.classList.contains("nav-link"))
-    //   headerEl.classList.remove("nav-open");
+    if (html.classList.contains("nav-overflow" && "nav-open")) {
+      html.classList.remove("nav-open");
+      html.classList.remove("nav-overflow");
+    }
+
     link.classList.contains("nav-link")
       ? headerEl.classList.remove("nav-open")
-      : console.log("didn't work  ");
+      : console.log("");
   });
 });
+
+const sectionElHero = document.querySelector(".section-hero");
+
+const obs = new IntersectionObserver(
+  function (entries) {
+    const ent = entries[0];
+    console.log(ent);
+    if (!ent.isIntersecting) {
+      document.body.classList.add("sticky");
+    } else {
+      document.body.classList.remove("sticky");
+    }
+  },
+  {
+    root: null,
+    threshold: 0,
+    rootMargin: "-80px",
+  }
+);
+obs.observe(sectionElHero);

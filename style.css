@@ -1,16 +1,10 @@
-@font-face {
-  font-family: "rubik";
-  src: url("/fonts/rubik.ttf");
-}
-
 html {
   font-size: 62.5%;
   overflow-x: hidden;
-  /* scroll-behavior: smooth; */
 }
 
 body {
-  font-family: "rubik", "Rubik", sans-serif;
+  font-family: "Rubik", sans-serif;
   line-height: 1;
   font-weight: 400;
   color: #1e1e1e;
@@ -91,6 +85,7 @@ strong {
   align-items: center;
   background-color: #f6e3d4;
   padding: 1.2rem 3.8rem;
+  height: 7.2rem;
 }
 
 .main-navigation-list {
@@ -941,10 +936,28 @@ strong {
   color: #e67e22;
 }
 
+.sticky .header {
+  position: fixed;
+  background-color: #ffffffe8;
+  top: 0;
+  width: 100%;
+  height: 5.7rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  z-index: 2;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+  top: -7.2rem;
+  transform: translateY(7.2rem);
+}
+
+.sticky .section-hero {
+  margin-top: 7.2rem;
+}
+
 @media (min-width: 87.5em) {
   /* 1400px */
   html {
-    /* font-size: 68.75% !important; */
     font-size: 100% !important;
   }
 
@@ -999,7 +1012,7 @@ strong {
 @media (max-width: 75em) {
   /* 1200px */
   html {
-    font-size: 56.25% !important;
+    font-size: 56.25%;
   }
 
   .secondary-heading {
@@ -1141,7 +1154,8 @@ strong {
     left: 0;
     height: 100vh;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
     z-index: 1;
     transition: all 0.5s ease;
     opacity: 0;
@@ -1165,6 +1179,14 @@ strong {
     visibility: visible;
     pointer-events: auto;
     transform: translateX(0);
+  }
+
+  .nav-open.nav-overflow {
+    overflow-y: hidden;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-link:link,
